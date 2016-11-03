@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Qualité de l'écosystème aquatique</title>
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/maki.font/css/fontello.css"/>
+</head>
+<body data-spy="scroll" data-target="#side-nav" style="position: relative">
+<div class="container">
+    <div class="row">
+        <nav class="col-md-3" id="side-nav">
+            <!-- Menu de navigation de la page-->
+            <ul class="nav nav-pills nav-stacked" data-spy="affix">
+                <li class="active"><a href="#action">Passez à l'action!</a></li>
+                <li><a href="#etat">État de santé</a></li>
+                <li><a href="#plan_d_action">Plan d'action</a></li>
+            </ul>
+        </nav>
+        <div class="col-md-9">
+            <!-- Section principale de la page Web-->
+
+            <h2>Qualité de l'écosystème aquatique</h2>
+
+            <div id="action">
+                <h3>Passez à l'action!</h3>
+
+
+                <!-- Début des boutons d'appel à l'action -->
+
+                <p>
+                    <a href="http://www.ville.rouyn-noranda.qc.ca/fr/page/algues-bleu-vert/"
+                       class="btn btn-info btn-lg">
+                        <i class="glyphicon glyphicon-tint"></i> Information sur les algues bleu-vert</a>
+                </p>
+
+                <p>
+                    <a href="http://www.ville.rouyn-noranda.qc.ca/fr/page/installations-septiques/"
+                       class="btn btn-warning btn-lg">
+                        <i class="glyphicon glyphicon-search"></i> Inspectez votre installation septique</a>
+                </p>
+
+                <!-- Fin des boutons d'appel à l'action -->
+
+            </div>
+
+
+            <div id="etat">
+                <h3>État de santé</h3>
+
+                <h4>Phosphore total</h4>
+
+                <!-- Section des diagrammes annuels de concentration du phosphore total -->
+                <!-- Les diagrammes annuels de concentration du phosphore total sont générés -->
+                <!-- automatiquement. Ne pas modifier le code html pour mettre à jour les données -->
+
+                <script src="graphiques_rsvl/listes.js"></script>
+                <script src="js/graphiquesRsvl.js"></script>
+
+                <img id="img_phosphore" src=""/>
+
+                <script>
+                    var elImgPhosphore = document.getElementById("img_phosphore");
+                    listeGraphiquesPhosphore = new indexedArray(graphiquePhosphore, graphiquePhosphore.length - 1);
+                    elImgPhosphore.src = listeGraphiquesPhosphore.next();
+
+
+                    var graphiquePhosphorePrecedent = function(event) {
+                        event.preventDefault();
+                        var elImgPhosphore = document.getElementById("img_phosphore");
+                        elImgPhosphore.src = listeGraphiquesPhosphore.previous();
+                    };
+
+                    var graphiquePhosphoreSuivant = function(event) {
+                        event.preventDefault();
+                        var elImgPhosphore = document.getElementById("img_phosphore");
+                        elImgPhosphore.src = listeGraphiquesPhosphore.next();
+                    };
+                </script>
+
+
+                <div>
+                    <form class="navbar-form navbar-default">
+                        <button type="submit" class="btn btn-default" onclick="graphiquePhosphorePrecedent(event)"><span
+                                class="glyphicon glyphicon-backward"
+                                aria-hidden="true"
+                                style="margin-right: 4px;"></span>Année
+                            précédente
+                        </button>
+                        <button type="submit" class="btn btn-default" onclick="graphiquePhosphoreSuivant(event)">Année
+                            suivante<span
+                                    class="glyphicon glyphicon-forward" aria-hidden="true"
+                                    style="margin-left: 4px;"></span>
+                        </button>
+                    </form>
+
+                </div>
+
+                <!-- Fin de la section des diagrammes annuels de concentration du phosphore total -->
+
+
+                <div>
+                    <p>Moyenne des trois mesures du phosphore total (μg / l)</p>
+                </div>
+
+
+                <h4>Chlorophylle a</h4>
+
+
+                <!-- Section des diagrammes annuels de concentration de la chlorophylle a -->
+                <!-- Les diagrammes annuels de concentration de la chlorophylle a sont générés -->
+                <!-- automatiquement. Ne pas modifier le code html pour mettre à jour les données -->
+
+                <img id="img_chlorophylle" src=""/>
+
+                <script>
+                    var elImgChlorophylle = document.getElementById("img_chlorophylle");
+                    listeGraphiquesChlorophylle = new indexedArray(graphiqueChlorophylle, graphiqueChlorophylle.length -
+                            1);
+                    elImgChlorophylle.src = listeGraphiquesChlorophylle.next();
+
+
+                    var graphiqueChlorophyllePrecedent = function(event) {
+                        event.preventDefault();
+                        var elImgChlorophylle = document.getElementById("img_chlorophylle");
+                        elImgChlorophylle.src = listeGraphiquesChlorophylle.previous();
+                    };
+
+                    var graphiqueChlorophylleSuivant = function(event) {
+                        event.preventDefault();
+                        var elImgChlorophylle = document.getElementById("img_chlorophylle");
+                        elImgChlorophylle.src = listeGraphiquesChlorophylle.next();
+                    };
+                </script>
+
+                <div>
+                    <form class="navbar-form navbar-default">
+                        <button type="submit" class="btn btn-default"
+                                onclick="graphiqueChlorophyllePrecedent(event)"><span
+                                class="glyphicon glyphicon-backward"
+                                aria-hidden="true"
+                                style="margin-right: 4px;"></span>Année
+                            précédente
+                        </button>
+                        <button type="submit" class="btn btn-default" onclick="graphiqueChlorophylleSuivant(event)">
+                            Année suivante<span
+                                class="glyphicon glyphicon-forward" aria-hidden="true" style="margin-left: 4px;"></span>
+                        </button>
+                    </form>
+
+                </div>
+
+                <!-- Fin de la section des diagrammes annuels de concentration de la chlorophylle a -->
+
+                <p>Moyenne des trois mesures de chlorophylle (μg / l)</p>
+
+                <!-- Bouton d'information sur le Réseau de surveillance volontaire des lacs (RSVL) -->
+                <p>
+                    <a href="http://www.mddelcc.gouv.qc.ca/EAU/rsvl/index.htm" class="btn btn-info btn-lg">
+                        <i class="glyphicon glyphicon-search"></i> Comment mesurer la santé d’un lac?</a>
+                </p>
+
+            </div>
+
+            <section id="plan_d_action">
+
+                <h3>Plan d'action</h3>
+
+                <!-- Début du tableau de suivi du plan d'action -->
+                <!-- Cette section est générée automatique à partir de l'outil d'administration du -->
+                <!-- plan d'action -->
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>Action</th>
+                        <th>Responsable</th>
+                        <th>Partenaires</th>
+                        <th>Fréquence</th>
+                        <th>Échéancier</th>
+                        <th>État</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Évaluer le nombre de castors et la superficie des étangs par photo-interprétation</td>
+                        <td>Ville</td>
+                        <td></td>
+                        <td></td>
+                        <td>2016</td>
+                        <td><span><span class="glyphicon glyphicon-calendar" aria-hidden="true"
+                                        style="color:green;"></span>Planifié</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Faire le suivi du périphyton</td>
+                        <td>Ville et Comité environnement</td>
+                        <td></td>
+                        <td></td>
+                        <td>2016</td>
+                        <td><span><span class="glyphicon glyphicon-calendar" aria-hidden="true"
+                                        style="color:green;"></span>Planifié</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Suivi de la transparence de l&#x27;eau avec le RSVL</td>
+                        <td>Comité environnement</td>
+                        <td></td>
+                        <td>10 fois par année</td>
+                        <td></td>
+                        <td><span><span class="glyphicon glyphicon-signal" aria-hidden="true"
+                                        style="color:green;"></span>En cours</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Faire le suivi des cyanobactéries</td>
+                        <td>Comité environnement (Marie-Julie V)</td>
+                        <td>Ministère du Développement durable, de l&#x27;Environnement et de la Lutte contre les
+                            changements
+                            climatiques
+                        </td>
+                        <td>À tous les étés</td>
+                        <td>Aucun</td>
+                        <td><span><span class="glyphicon glyphicon-calendar" aria-hidden="true"
+                                        style="color:green;"></span>Planifié</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Suivi de la qualité de l&#x27;eau avec le RSVL</td>
+                        <td>Comité environnement</td>
+                        <td></td>
+                        <td>2 ans consécutifs, 4 ans de pause</td>
+                        <td>2019</td>
+                        <td><span><span class="glyphicon glyphicon-calendar" aria-hidden="true"
+                                        style="color:green;"></span>Planifié</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Identification des plantes aquatiques présentes</td>
+                        <td>Roger Larivière</td>
+                        <td>Ville et Organisme de bassin versant</td>
+                        <td>1 fois</td>
+                        <td>Été 2011</td>
+                        <td><span><span class="glyphicon glyphicon-check" aria-hidden="true"
+                                        style="color:green;"></span>Réalisé</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Échantillonnage de l&#x27;affluent du lac</td>
+                        <td>Ville</td>
+                        <td></td>
+                        <td>1 fois</td>
+                        <td>2011</td>
+                        <td><span><span class="glyphicon glyphicon-check" aria-hidden="true"
+                                        style="color:green;"></span>Réalisé</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Activité de sensibilisation sur les savons sans phosphates</td>
+                        <td>Bureau de quartier</td>
+                        <td></td>
+                        <td>1 fois</td>
+                        <td>2008</td>
+                        <td><span><span class="glyphicon glyphicon-check" aria-hidden="true"
+                                        style="color:green;"></span>Réalisé</span>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <!--Fin du tableau généré automatique pour l'administration des plans d'action -->
+            </section>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap core JavaScript
+   ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+</body>
+</html>
