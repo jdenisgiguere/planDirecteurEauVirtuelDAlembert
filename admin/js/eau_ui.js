@@ -27,7 +27,7 @@ var Diagramme = React.createClass({
         var title = "Concentration moyenne en " + this.props.mesure + " en " + this.props.annee;
 
         return (
-            <svg xmlNS="http://www.w3.org/2000/svg" version="1.1" height="220" width="600" fontFamily="sans">
+            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="220" width="600" fontFamily="sans">
                 <defs>
                     <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="0%">
                         <stop offset="0%" style={{stopColor: "#6985FB", stopOpacity: 1}}/>
