@@ -48,8 +48,6 @@
             <div id="etat">
                 <h3>État de santé</h3>
 
-                <h4>Phosphore total</h4>
-
                 <!-- Section des diagrammes annuels de concentration du phosphore total -->
                 <!-- Les diagrammes annuels de concentration du phosphore total sont générés -->
                 <!-- automatiquement. Ne pas modifier le code html pour mettre à jour les données -->
@@ -99,56 +97,55 @@
                 <!-- Fin de la section des diagrammes annuels de concentration du phosphore total -->
 
 
-                <div>
-                    <p>Moyenne des trois mesures du phosphore total (μg / l)</p>
-                </div>
-
-
-                <h4>Chlorophylle a</h4>
-
 
                 <!-- Section des diagrammes annuels de concentration de la chlorophylle a -->
                 <!-- Les diagrammes annuels de concentration de la chlorophylle a sont générés -->
                 <!-- automatiquement. Ne pas modifier le code html pour mettre à jour les données -->
-
-                <img id="img_chlorophylle" src=""/>
-
-                <script>
-                    var elImgChlorophylle = document.getElementById("img_chlorophylle");
-                    listeGraphiquesChlorophylle = new indexedArray(graphiqueChlorophylle, graphiqueChlorophylle.length -
-                            1);
-                    elImgChlorophylle.src = listeGraphiquesChlorophylle.next();
-
-
-                    var graphiqueChlorophyllePrecedent = function(event) {
-                        event.preventDefault();
-                        var elImgChlorophylle = document.getElementById("img_chlorophylle");
-                        elImgChlorophylle.src = listeGraphiquesChlorophylle.previous();
-                    };
-
-                    var graphiqueChlorophylleSuivant = function(event) {
-                        event.preventDefault();
-                        var elImgChlorophylle = document.getElementById("img_chlorophylle");
-                        elImgChlorophylle.src = listeGraphiquesChlorophylle.next();
-                    };
-                </script>
-
                 <div>
-                    <form class="navbar-form navbar-default">
-                        <button type="submit" class="btn btn-default"
-                                onclick="graphiqueChlorophyllePrecedent(event)"><span
-                                class="glyphicon glyphicon-backward"
-                                aria-hidden="true"
-                                style="margin-right: 4px;"></span>Année
-                            précédente
-                        </button>
-                        <button type="submit" class="btn btn-default" onclick="graphiqueChlorophylleSuivant(event)">
-                            Année suivante<span
-                                class="glyphicon glyphicon-forward" aria-hidden="true" style="margin-left: 4px;"></span>
-                        </button>
-                    </form>
+                    <div>
+                        <img id="img_chlorophylle" src=""/>
+                    </div>
 
+
+                    <script>
+                        var elImgChlorophylle = document.getElementById("img_chlorophylle");
+                        listeGraphiquesChlorophylle = new indexedArray(graphiqueChlorophylle, graphiqueChlorophylle.length -
+                                1);
+                        elImgChlorophylle.src = listeGraphiquesChlorophylle.next();
+
+
+                        var graphiqueChlorophyllePrecedent = function(event) {
+                            event.preventDefault();
+                            var elImgChlorophylle = document.getElementById("img_chlorophylle");
+                            elImgChlorophylle.src = listeGraphiquesChlorophylle.previous();
+                        };
+
+                        var graphiqueChlorophylleSuivant = function(event) {
+                            event.preventDefault();
+                            var elImgChlorophylle = document.getElementById("img_chlorophylle");
+                            elImgChlorophylle.src = listeGraphiquesChlorophylle.next();
+                        };
+                    </script>
+
+                    <div>
+                        <form class="navbar-form navbar-default">
+                            <button type="submit" class="btn btn-default"
+                                    onclick="graphiqueChlorophyllePrecedent(event)"><span
+                                    class="glyphicon glyphicon-backward"
+                                    aria-hidden="true"
+                                    style="margin-right: 4px;"></span>Année
+                                précédente
+                            </button>
+                            <button type="submit" class="btn btn-default" onclick="graphiqueChlorophylleSuivant(event)">
+                                Année suivante<span
+                                    class="glyphicon glyphicon-forward" aria-hidden="true" style="margin-left: 4px;"></span>
+                            </button>
+                        </form>
+
+                    </div>
                 </div>
+
+
 
                 <!-- Fin de la section des diagrammes annuels de concentration de la chlorophylle a -->
 
