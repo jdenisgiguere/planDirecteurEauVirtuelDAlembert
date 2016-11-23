@@ -86,7 +86,9 @@ var GenererDiagramme = React.createClass({
         var graphiquesRsvlZip = new JSZip();
         var graphiquesRsvlDir = graphiquesRsvlZip.folder("graphiques_rsvl");
         var graphiquesName = {"phosphore": [], "chlorophylle" : []};
-        graphiquesRsvlDir.file("lisez-moi.txt", "Graphique du RSVL généré maintenant\n");
+        var maintenant = new Date();
+        var texteLisezMoi = "Graphique du RSVL généré le " + maintenant.toLocaleString() + "\n"
+        graphiquesRsvlDir.file("lisez-moi.txt",texteLisezMoi );
         rsvlDB.allDocs({include_docs: true, descending: true}).then(function(result) {
             var indicateurParAnnee = {phosphore: {}, chlorophylle: {}, transparence: {}, carbone_organique_dissous: {}};
             result.rows.forEach(function(row) {
