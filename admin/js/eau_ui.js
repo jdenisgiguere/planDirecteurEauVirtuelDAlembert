@@ -1,5 +1,6 @@
 requirejs(['js/calculateurDiagramme.js']);
 
+
 var IndicateurSelect = React.createClass({
     updateIndicateur: function() {
         this.props.onIndicateurUpdated(this.refs.indicateur);
@@ -24,7 +25,7 @@ var IndicateurSelect = React.createClass({
 var Diagramme = React.createClass({
     render: function() {
         var symbolSize = 10;
-        var title = "Concentration moyenne en " + this.props.mesure + " en " + this.props.annee;
+        var title = "Concentration moyenne en " + this.props.indicateur + " en " + this.props.annee;
 
         return (
             <svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="220" width="600" fontFamily="sans">
@@ -52,11 +53,11 @@ var Diagramme = React.createClass({
                     <text x="83" y="65" fill="black" textAnchor="middle">Oligotrophe</text>
                     <path id="oligo-vs-meso" d="M 174 80 L 174 180 Z" stroke="black" strokeWidth="2" fill="none"/>
                     <text x="174" y="205"
-                          textAnchor="middle">{CalculateurDiagramme.niveauTrophique[this.props.mesure].oligotropheMax}</text>
+                          textAnchor="middle">{CalculateurDiagramme.niveauTrophique[this.props.indicateur].oligotropheMax}</text>
                     <text x="250" y="65" fill="black" textAnchor="middle">Mésotrophe</text>
                     <path id="meso-vs-eu" d="M 346 80 L 346 180 Z" stroke="black" strokeWidth="2" fill="none"/>
                     <text x="346" y="205"
-                          textAnchor="middle">{CalculateurDiagramme.niveauTrophique[this.props.mesure].mesotropheMax}</text>
+                          textAnchor="middle">{CalculateurDiagramme.niveauTrophique[this.props.indicateur].mesotropheMax}</text>
                     <text x="416" y="65" fill="black" textAnchor="middle">Eutrophe</text>
                     <text x="500" y="55" fill="black" textAnchor="middle">Hyper-
                         <tspan x="500" y="75" textAnchor="middle">eutrophe</tspan>
@@ -64,12 +65,12 @@ var Diagramme = React.createClass({
                 </g>
 
                 <g className="mesure" transform="translate(50,80)">
-                    <rect x={CalculateurDiagramme.mesureVersPosition(this.props.mesure, this.props.valeur) -
+                    <rect x={CalculateurDiagramme.mesureVersPosition(this.props.indicateur, this.props.mesure) -
                     symbolSize / 2.0} y="50"
                           height={symbolSize} width={symbolSize} fill="rgb(255,255,0)"/>
-                    <text x={CalculateurDiagramme.mesureVersPosition(this.props.mesure, this.props.valeur) -
+                    <text x={CalculateurDiagramme.mesureVersPosition(this.props.indicateur, this.props.mesure) -
                     symbolSize / 2.0} y="80" fill="rgb(255,255,0)"
-                          textAnchor="middle">{this.props.valeur.toFixed(1)}</text>
+                          textAnchor="middle">{this.props.mesure.toFixed(1)}</text>
 
                 </g>
 
@@ -87,7 +88,7 @@ var GenererDiagramme = React.createClass({
         var graphiquesName = {"phosphore": [], "chlorophylle" : []};
         graphiquesRsvlDir.file("lisez-moi.txt", "Graphique du RSVL généré maintenant\n");
         rsvlDB.allDocs({include_docs: true, descending: true}).then(function(result) {
-            var indicateurParAnnee = {phosphore: {}, chlorophylle: {}};
+            var indicateurParAnnee = {phosphore: {}, chlorophylle: {}, transparence: {}, carbone_organique_dissous: {}};
             result.rows.forEach(function(row) {
                 var dateMesure = new Date(row.doc.date);
                 var annee = dateMesure.getFullYear();
@@ -110,8 +111,8 @@ var GenererDiagramme = React.createClass({
                     });
                     var moyenne = parseFloat(sum) / indicateurParAnnee[indicateur][annee].length;
                     console.log("La moyenne de " + indicateur + " pour l'année ", annee, " est ", moyenne);
-                    var diagramme = ReactDOMServer.renderToStaticMarkup(<Diagramme mesure={indicateur}
-                                                                                   valeur={moyenne} annee={annee}/>);
+                    var diagramme = ReactDOMServer.renderToStaticMarkup(<Diagramme indicateur={indicateur}
+                                                                                   mesure={moyenne} annee={annee}/>);
                     var result = [diagramme,];
                     var blob = new Blob(result, {type: "image/svg+xml;charset=utf-8"});
                     var filename = indicateur + "_" + annee + ".svg";
