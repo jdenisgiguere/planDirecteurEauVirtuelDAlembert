@@ -24,8 +24,20 @@ var IndicateurSelect = React.createClass({
 
 var Diagramme = React.createClass({
     render: function() {
+        var indacteurNomComplet = function (indicateur) {
+            var nomComplet;
+            if (indicateur === "phosphore") {
+                nomComplet = "phosphore total (μg/l)";
+            } else if (indicateur === "chlorophylle") {
+                nomComplet = "chloropylle a (μg/l)";
+            } else {
+                nomComplet = indicateur;
+            }
+
+            return nomComplet;
+        };
         var symbolSize = 10;
-        var title = "Concentration moyenne en " + this.props.indicateur + " en " + this.props.annee;
+        var title = "Concentration moyenne en " + indacteurNomComplet(this.props.indicateur) + " en " + this.props.annee;
 
         return (
             <svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="220" width="600" fontFamily="sans">
@@ -37,7 +49,7 @@ var Diagramme = React.createClass({
                 </defs>
 
                 <g className="titre" transform="translate(50,0)">
-                    <text x="250" y="20" textAnchor="middle" fontSize="16pt">{title}</text>
+                    <text x="250" y="20" textAnchor="middle" fontSize="14pt">{title}</text>
                 </g>
 
 
